@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ <!--Sukuriami lentutes remai su pavadinimais-->
+  <tbody> 
+    <% @contacts.each do |contact| %> <!--Atvaizduojamas kiekvienas kontaktas su mygtukais salia-->
+      <tr>
+        <td><%= contact.first_name %></td>
+        <td><%= contact.last_name %></td>
+        <td><%= contact.phone_number %></td>
+        <td><%= contact.email %></td>
+        <td><%= link_to 'Show', contact %></td> <!--Linkas parodyti contacta-->
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td> <!--Linkas koreguoti contacta-->
+        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td> <!--Linkas istrinti contacta su paklausimu ar tikrai norite istrinti-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact', new_contact_path %>
